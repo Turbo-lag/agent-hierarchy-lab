@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "wall_clock_limit_minutes": 30,
+  "max_agents_including_root": 4,
+  "network_during_run": false,
+  "tasks": ["coding", "science", "research"],
+  "architectures": ["solo", "pipeline", "manager", "candidates", "hierarchy"],
+  "pilot_repetitions": 1,
+  "total_planned_repetitions": 3,
+  "schedule_seed": 20261107,
+  "budget_policy": "fixed wall-clock cap; report aggregate observed usage separately",
+  "note": "This is not a token- or cost-matched experiment. Usage may be unavailable in the client."
+}

@@ -1,0 +1,17 @@
+{
+  "coding": [
+    {"id":"regression", "max":10, "criterion":"Submission tests reproduce interacting graph and invalid-input defects, verify nonmutation, and include a long chain. Full credit requires executed evidence; partial credit 5 for useful but incomplete coverage; 0 for absent/unexecuted evidence."},
+    {"id":"explanation", "max":10, "criterion":"Report connects defects to fixes, states actual checks and limitations, and correctly justifies graph complexity without dense allocation. 10 complete and correct, 5 substantive omissions, 0 absent or materially wrong."}
+  ],
+  "science": [
+    {"id":"study", "max":10, "criterion":"verify.py reruns successfully and verification.json contains reproducible max/L2 errors and refinement orders for both specified cases and all four grids. 10 all correct, 5 one correct case or incomplete grids, 0 absent/fabricated/nonreproducible. Independently recompute reported numbers."},
+    {"id":"derivation", "max":10, "criterion":"Report correctly explains flux stencil, boundary elimination, O(n) solver, second-order evidence, residual versus solution error, and lack of physical validation. 10 complete/correct, 5 substantive omissions, 0 absent or materially wrong."}
+  ],
+  "research": [
+    {"id":"admissibility", "max":30, "criterion":"10 each: A recognizes CG with matrix AND preconditioner SPD; B proposes defensible nonsymmetric/no-transpose methods within the basis constraint; C explains variable/nonlinear inner preconditioning and a flexible method. Per scenario: 10 correct with rationale/citation, 5 plausible but omits a key condition, 0 incompatible recommendation. Sum three subscores in evidence."},
+    {"id":"evidence", "max":25, "criterion":"Audit every claims.json entry against its cited note. Award 25 * supported_entries / total_entries (round to 2 decimals). An entry counts only if source IDs exist, its whole substantive claim follows directly or is explicitly justified as inference, and limitations are truthful. Fabricated measurements or quotations make that entry unsupported. Missing/invalid claims list scores 0; include an entry-by-entry audit."},
+    {"id":"tradeoffs", "max":20, "criterion":"5 each: rejects universal superiority; explains restart/storage/convergence interaction; distinguishes basis budget from total storage; recognizes uncertainty/breakdown and absent timings. Each item: 5 accurate and supported, 2.5 incomplete, 0 absent/wrong."},
+    {"id":"validation", "max":15, "criterion":"5 each: common recomputed true-residual target and matched problem/settings; separate setup/solve timing plus repeat trials and failures; memory/restart measurements and work-aware comparison beyond iteration counts. Each: 5 actionable, 2.5 incomplete, 0 missing/wrong."},
+    {"id":"clarity", "max":10, "criterion":"5 for all deliverables/schema and 900-1400 word report; 5 for traceable recommendations clearly separating evidence, inference, and assumptions. Each: 5 complete, 2.5 partial, 0 absent. Structure checker informs only this item, not factual correctness."}
+  ]
+}

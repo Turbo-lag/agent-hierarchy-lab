@@ -1,0 +1,56 @@
+[
+  {
+    "id": "S1",
+    "title": "PETSc KSPCG documentation",
+    "url": "https://petsc.org/release/manualpages/KSP/KSPCG/",
+    "accessed": "2026-11-07",
+    "locator": "Notes; documentation build v3.26.1-4-g3ae3561669ca",
+    "kind": "author paraphrase of official implementation documentation",
+    "note": "PETSc's CG implementation imposes symmetry and definiteness conditions on both the matrix and the preconditioner. Real symmetric positive-definite matrices with a fixed SPD preconditioner provide the standard admissible setting used in this benchmark. The documented PETSc implementation supports left preconditioning. Its documentation also discusses specialized complex and semidefinite settings; this digest does not extend the benchmark to them. A solver being mathematically appropriate does not supply a measured runtime comparison for the synthetic scenarios."
+  },
+  {
+    "id": "S2",
+    "title": "PETSc KSPGMRES documentation",
+    "url": "https://petsc.org/release/manualpages/KSP/KSPGMRES/",
+    "accessed": "2026-11-07",
+    "locator": "Description, Options Database Keys, Notes; build v3.26.1-4-g3ae3561669ca",
+    "kind": "author paraphrase of official implementation documentation",
+    "note": "PETSc implements restarted GMRES. Its restart parameter controls how many Krylov directions participate in orthogonalization; storage for those directions can be allocated in advance or incrementally. Left and right preconditioning are supported, but symmetric preconditioning is not. The directions are only part of total solver storage. The page does not provide a universally optimal restart length or scenario-specific benchmark timings."
+  },
+  {
+    "id": "S3",
+    "title": "PETSc KSPBCGS documentation",
+    "url": "https://petsc.org/release/manualpages/KSP/KSPBCGS/",
+    "accessed": "2026-11-07",
+    "locator": "Notes; build v3.26.1-4-g3ae3561669ca",
+    "kind": "author paraphrase of official implementation documentation",
+    "note": "KSPBCGS implements BiCGStab and supports left or right, but not symmetric, preconditioning. It avoids explicitly retaining the growing Krylov basis needed by GMRES. The documentation presents it as an alternative when GMRES restart choices do not give a satisfactory balance between iteration expense and convergence. This is a conditional motivation, not a promise that BiCGStab always converges faster or succeeds on every nonsymmetric system. Flexible and pipelined variants are separate implementations."
+  },
+  {
+    "id": "S4",
+    "title": "PETSc KSPFGMRES documentation",
+    "url": "https://petsc.org/release/manualpages/KSP/KSPFGMRES/",
+    "accessed": "2026-11-07",
+    "locator": "Notes; build v3.26.1-4-g3ae3561669ca",
+    "kind": "author paraphrase of official implementation documentation",
+    "note": "Ordinary GMRES requires a linear preconditioning operator. Flexible GMRES permits nonlinear preconditioning and accommodates changes to the preconditioner between iterations. An inner Krylov solve is an example of an operation that is generally nonlinear when used as a preconditioner. The PETSc flexible-GMRES implementation supports right preconditioning. A restart parameter is available. These capabilities address admissibility; the page does not establish a universal speed advantage or identical storage to ordinary GMRES."
+  },
+  {
+    "id": "S5",
+    "title": "PETSc KSPMonitorTrueResidual documentation",
+    "url": "https://petsc.org/release/manualpages/KSP/KSPMonitorTrueResidual/",
+    "accessed": "2026-11-07",
+    "locator": "Description and Notes; build v3.26.1-4-g3ae3561669ca",
+    "kind": "author paraphrase of official implementation documentation",
+    "note": "The monitor reports the true residual norm as well as the solver-reported norm, which can be preconditioned or approximate. Thus a displayed iteration residual should not automatically be interpreted as the norm of b-Ax. The documentation notes equivalence of the two norms for right preconditioning. A comparison protocol can explicitly recompute b-Ax to make its achieved residual criterion inspectable; that protocol is a methodological inference, not a timing result supplied by the page."
+  },
+  {
+    "id": "S6",
+    "title": "Barrett et al., Templates for the Solution of Linear Systems, second edition",
+    "url": "https://netlib.org/templates/templates.html",
+    "accessed": "2026-11-07",
+    "locator": "Overview of methods; GMRES; BiCGSTAB; Computational aspects; Preconditioners cost trade-off",
+    "kind": "author paraphrase of the authors' electronic reference text",
+    "note": "Iterative-method selection depends on matrix properties, available storage, and relative costs of matrix products, preconditioner applications, vector operations, and inner products. GMRES retains basis vectors; restarting limits storage but may impair convergence. BiCGStab handles nonsymmetric systems without a transpose product and uses short recurrences; it is not immune to breakdown or poor convergence. Preconditioning can trade setup/application expense for fewer iterations, so iteration count alone is insufficient to determine total cost. The text offers algorithms and selection guidance rather than benchmark measurements for the synthetic cases here."
+  }
+]
