@@ -1,0 +1,97 @@
+{
+  "run_id": "science-hierarchy-isolation-r1",
+  "score": 100,
+  "eligible": true,
+  "automatic_cases": [
+    {
+      "case": "science_affine",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_polynomial",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_convergence",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_variable",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_general",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_validation",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_smallest",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_large",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    }
+  ],
+  "manual_criteria": [
+    {
+      "id": "study",
+      "score": 10,
+      "max": 10
+    },
+    {
+      "id": "derivation",
+      "score": 10,
+      "max": 10
+    }
+  ],
+  "original_manual_ratings": [
+    20,
+    20
+  ],
+  "files": {
+    "solver.py": {
+      "frozen_sha256": "542a0f4d4f55dc48cc5a81b13b7a62cf79eeaa060bab45be30844b70607ccdea",
+      "public_sha256": "542a0f4d4f55dc48cc5a81b13b7a62cf79eeaa060bab45be30844b70607ccdea"
+    },
+    "verify.py": {
+      "frozen_sha256": "191f5d70cb69e622088888a1caf380fdaaeb003731806e1f0bd1d3cc20521340",
+      "public_sha256": "191f5d70cb69e622088888a1caf380fdaaeb003731806e1f0bd1d3cc20521340"
+    },
+    "verification.json": {
+      "frozen_sha256": "cbd11c6427409934b5f9d0984d0b5c9e5cf2cd16685fbc9ead5e6ed713b5b1d8",
+      "public_sha256": "cbd11c6427409934b5f9d0984d0b5c9e5cf2cd16685fbc9ead5e6ed713b5b1d8"
+    },
+    "test_solution.py": {
+      "frozen_sha256": "cbe28e986242e97d4ba4c5c77eb19054812b5b75be6739634c4d8fa10c61f71f",
+      "public_sha256": "cbe28e986242e97d4ba4c5c77eb19054812b5b75be6739634c4d8fa10c61f71f"
+    },
+    "tests/test_smoke.py": {
+      "frozen_sha256": "ab968fa150ed8404b49efdcf0056abe8633d7803c1fc9233371939b71ee06116",
+      "public_sha256": "ab968fa150ed8404b49efdcf0056abe8633d7803c1fc9233371939b71ee06116"
+    },
+    "report.md": {
+      "frozen_sha256": "483c6d76c4f567e06a9b84faae9fe09880efcc89d04a9bf4fc9993c8ba52a3b4",
+      "public_sha256": "483c6d76c4f567e06a9b84faae9fe09880efcc89d04a9bf4fc9993c8ba52a3b4"
+    }
+  }
+}

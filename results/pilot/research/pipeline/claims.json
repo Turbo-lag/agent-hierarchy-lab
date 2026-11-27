@@ -1,0 +1,108 @@
+[
+  {
+    "id": "C1",
+    "claim": "A real SPD matrix with a fixed SPD preconditioner is the standard admissible CG setting described in this digest; PETSc CG supports left preconditioning.",
+    "source_ids": [
+      "S1"
+    ],
+    "support": "direct",
+    "rationale": "S1 explicitly imposes symmetry and definiteness conditions on both matrix and preconditioner, identifies the fixed-SPD setting, and states the supported preconditioning side.",
+    "limitation": "This statement is restricted to the real SPD setting; it neither extends to general nonsymmetric matrices nor establishes performance."
+  },
+  {
+    "id": "C2",
+    "claim": "Use fixed-SPD-preconditioned CG as the first baseline for scenario A, without claiming it is fastest.",
+    "source_ids": [
+      "S1"
+    ],
+    "support": "inference",
+    "rationale": "A supplies exactly the matrix and preconditioner properties that S1 identifies as the standard admissible setting, so CG is a well-matched baseline. S1 explicitly distinguishes admissibility from measured runtime.",
+    "limitation": "The supplied SPD properties are synthetic assumptions to verify on actual inputs; no timings or comparative convergence data are available."
+  },
+  {
+    "id": "C3",
+    "claim": "GMRES restart length controls orthogonalization directions, but their storage is only part of total solver storage.",
+    "source_ids": [
+      "S2"
+    ],
+    "support": "direct",
+    "rationale": "S2 connects the restart parameter to Krylov directions participating in orthogonalization and expressly states that these directions do not constitute all solver storage.",
+    "limitation": "The digest does not specify exact resident-vector counts for a particular restart setting or implementation."
+  },
+  {
+    "id": "C4",
+    "claim": "Restarting GMRES limits basis storage but may impair convergence.",
+    "source_ids": [
+      "S6"
+    ],
+    "support": "direct",
+    "rationale": "S6 explicitly describes GMRES basis retention and the storage benefit and possible convergence penalty of restarting.",
+    "limitation": "This qualitative tradeoff supplies neither an optimal restart length nor a prediction for scenario B."
+  },
+  {
+    "id": "C5",
+    "claim": "BiCGStab handles nonsymmetric systems without a transpose product and uses short recurrences, but can suffer breakdown or poor convergence.",
+    "source_ids": [
+      "S6"
+    ],
+    "support": "direct",
+    "rationale": "S6 directly supplies the nonsymmetric setting, transpose-free requirement, recurrence property, and breakdown/convergence caveat.",
+    "limitation": "Algorithmic eligibility and short recurrence do not guarantee success, low total memory, or faster solves on any supplied scenario."
+  },
+  {
+    "id": "C6",
+    "claim": "For B, start a restarted-GMRES trial within the verified 20-vector orthogonalization budget and test BiCGStab if restart-limited progress or cost is unsatisfactory.",
+    "source_ids": [
+      "S2",
+      "S3",
+      "S6"
+    ],
+    "support": "inference",
+    "rationale": "S2 makes restart a basis-storage control rather than a total-memory guarantee. S6 describes restart-related convergence risk and transpose-free BiCGStab. S3 specifically motivates BiCGStab when GMRES restart choices give an unsatisfactory expense/convergence balance, supporting the conditional trial policy.",
+    "limitation": "The trial ordering is a proposed policy; convergence is unknown, and implementation-specific vector accounting must be checked."
+  },
+  {
+    "id": "C7",
+    "claim": "Flexible GMRES permits nonlinear and changing preconditioners, whereas ordinary GMRES requires a linear preconditioning operator; PETSc flexible GMRES supports right preconditioning.",
+    "source_ids": [
+      "S4"
+    ],
+    "support": "direct",
+    "rationale": "S4 states each distinction explicitly and identifies an inner Krylov solve as a generally nonlinear preconditioning example.",
+    "limitation": "These capabilities establish suitability, not speed or storage equivalence with ordinary GMRES."
+  },
+  {
+    "id": "C8",
+    "claim": "Use restarted right-preconditioned flexible GMRES as C's baseline; do not assume ordinary BiCGStab accommodates the supplied varying preconditioner.",
+    "source_ids": [
+      "S3",
+      "S4"
+    ],
+    "support": "inference",
+    "rationale": "C supplies a potentially changing inner-solve action, which S4 says flexible GMRES accommodates, with right preconditioning and restart available. S3 identifies flexible BiCGStab variants as separate implementations, so their flexibility should not be assigned to the ordinary method.",
+    "limitation": "This is a conservative recommendation, not a universal impossibility result for variable-preconditioned BiCGStab, and it provides no runtime ranking."
+  },
+  {
+    "id": "C9",
+    "claim": "Compare methods against one explicitly recomputed true-residual target, while recording solver-reported residuals separately.",
+    "source_ids": [
+      "S5"
+    ],
+    "support": "inference",
+    "rationale": "S5 warns that a reported residual can be preconditioned or approximate rather than the norm of b-Ax. Recomputing b-Ax under a shared criterion makes achieved residuals directly inspectable across methods.",
+    "limitation": "The target and protocol are methodological choices, not measurements; a residual threshold alone does not guarantee a particular forward error."
+  },
+  {
+    "id": "C10",
+    "claim": "BiCGStab's avoidance of a growing GMRES basis does not justify calling it always best; selection must consider admissibility, convergence, memory, and measured setup and solve costs.",
+    "source_ids": [
+      "S1",
+      "S3",
+      "S4",
+      "S6"
+    ],
+    "support": "inference",
+    "rationale": "S3 supplies the basis-storage advantage but only a conditional selection motivation. S1 gives a specialized CG setting and S4 identifies a flexibility requirement, showing that mathematical fit matters. S6 adds restart risks, BiCGStab failure risks, and the cost tradeoff of preconditioning, so memory and iteration counts alone cannot settle the choice.",
+    "limitation": "The digest supports rejecting an unsupported universal ranking but provides no measured counterexample, speedup, or scenario-specific performance ordering."
+  }
+]

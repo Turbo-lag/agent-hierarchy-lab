@@ -1,0 +1,16 @@
+run_id,task,architecture,status,score,automatic,automatic_max,manual,elapsed_seconds,sessions,architecture_valid,environment_valid,eligible,usage_complete,input_tokens,cached_input_tokens,output_tokens,reasoning_output_tokens,total_tokens
+research-solo-isolation-r1,research,solo,completed,97.92,0,0,97.92,177.38942558295093,1,True,True,True,True,106328,99584,9460,1660,115788
+research-manager-r1-rerun1,research,manager,completed,100,0,0,100,186.73327733390033,4,True,True,True,True,1341865,1250816,22252,3195,1364117
+research-pipeline-r1-rerun1,research,pipeline,completed,100,0,0,100,383.6132145409938,4,True,True,True,True,707921,605952,20619,1608,728540
+research-candidates-isolation-r1,research,candidates,completed,100,0,0,100,273.1034670001827,4,True,True,True,True,884078,806528,29283,3890,913361
+research-hierarchy-isolation-r1,research,hierarchy,completed,100,0,0,100,383.2630695409607,4,True,True,True,True,1963152,1815040,29522,4021,1992674
+science-solo-isolation-r1,science,solo,completed,100,80,80,20,229.48619633400813,1,True,True,True,True,174283,157056,11800,1590,186083
+science-manager-isolation-r1,science,manager,completed,100,80,80,20,198.15373200015165,4,True,True,True,True,1295497,1220352,22696,2580,1318193
+science-pipeline-isolation-r1,science,pipeline,completed,100,80,80,20,472.06573762511835,4,True,True,True,True,1002220,939520,23409,1410,1025629
+science-candidates-isolation-r1,science,candidates,completed,100,80,80,20,361.69508741702884,4,False,True,False,True,1490736,1344896,41874,5612,1532610
+science-hierarchy-isolation-r1,science,hierarchy,completed,100,80,80,20,301.4239542922005,4,True,True,True,True,1832227,1704192,30055,4654,1862282
+coding-solo-isolation-r1,coding,solo,completed,100,80,80,20,196.6908413330093,1,True,True,True,True,164705,136192,8692,943,173397
+coding-manager-isolation-r1,coding,manager,completed,100,80,80,20,252.10853283293545,4,True,True,True,True,1334491,1248640,24398,3438,1358889
+coding-pipeline-isolation-r1,coding,pipeline,completed,100,80,80,20,479.23461670801044,4,True,True,True,True,970732,913152,22592,1414,993324
+coding-candidates-isolation-r1,coding,candidates,completed,100,80,80,20,336.5564998330083,4,True,True,True,True,1199233,1152896,35974,4467,1235207
+coding-hierarchy-isolation-r1,coding,hierarchy,completed,100,80,80,20,328.3759345419239,4,True,True,True,True,1782368,1681280,29446,4210,1811814

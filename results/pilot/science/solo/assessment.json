@@ -1,0 +1,97 @@
+{
+  "run_id": "science-solo-isolation-r1",
+  "score": 100,
+  "eligible": true,
+  "automatic_cases": [
+    {
+      "case": "science_affine",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_polynomial",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_convergence",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_variable",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_general",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_validation",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_smallest",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_large",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    }
+  ],
+  "manual_criteria": [
+    {
+      "id": "study",
+      "score": 10,
+      "max": 10
+    },
+    {
+      "id": "derivation",
+      "score": 10,
+      "max": 10
+    }
+  ],
+  "original_manual_ratings": [
+    20,
+    20
+  ],
+  "files": {
+    "solver.py": {
+      "frozen_sha256": "b278098d4b28a053e457d35015ff60a37adf65e96743c7e3ec9d51f2c356d861",
+      "public_sha256": "b278098d4b28a053e457d35015ff60a37adf65e96743c7e3ec9d51f2c356d861"
+    },
+    "verify.py": {
+      "frozen_sha256": "3c40c0b410cc2bcd9607c4fe1825f905f16843a7cec4aa5d556b58c98b9cdb49",
+      "public_sha256": "3c40c0b410cc2bcd9607c4fe1825f905f16843a7cec4aa5d556b58c98b9cdb49"
+    },
+    "verification.json": {
+      "frozen_sha256": "0bfa2f01ba083020341029a1fcf76bb5b5f2ca95940c245d0fe6c5b0d705c3d4",
+      "public_sha256": "0bfa2f01ba083020341029a1fcf76bb5b5f2ca95940c245d0fe6c5b0d705c3d4"
+    },
+    "test_solution.py": {
+      "frozen_sha256": "b21c686de91111a042b7c76a8ca8f9e717f213d3764eb18e9ff51a966e28e495",
+      "public_sha256": "b21c686de91111a042b7c76a8ca8f9e717f213d3764eb18e9ff51a966e28e495"
+    },
+    "tests/test_smoke.py": {
+      "frozen_sha256": "ab968fa150ed8404b49efdcf0056abe8633d7803c1fc9233371939b71ee06116",
+      "public_sha256": "ab968fa150ed8404b49efdcf0056abe8633d7803c1fc9233371939b71ee06116"
+    },
+    "report.md": {
+      "frozen_sha256": "a11aced3ba1fee8c79d61c5435c3ac82fd16f444a878d288ba8bb7b15879ff04",
+      "public_sha256": "46bfdd54929e3e23f9cdb1e83ca8bfd88ec634a5b4c6f6bc03ee8f581913f225"
+    }
+  }
+}

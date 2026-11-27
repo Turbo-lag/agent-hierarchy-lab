@@ -1,28 +1,46 @@
 # Agent Hierarchy Lab
 
-Reproducible experiments comparing five prompted agent organizations in local
-Codex, with GPT-6 Astra held fixed across three tasks.
+When does a team of AI agents produce a better answer than one agent working alone? This project tests that question by giving different agent organizations the same problem, model, tools and scoring rules.
 
-**Status: preparation only. No pilot runs or model-generated results yet.**
-Repository visibility: private; public release is a separate decision.
+**[Explore the pilot on GitHub Pages](https://turbo-lag.github.io/agent-hierarchy-lab/)** · [Browse submissions and scores](results/) · [Download the data](docs/data/pilot.csv)
 
-## Experiment v0.1
+## The 15 isolated runs
 
-| Task | Deliverable | Evaluation |
-| --- | --- | --- |
-| `coding` | Repair a dependency scheduler | Contract tests (80), review evidence (20) |
-| `science` | Solve a 1D variable-coefficient elliptic PDE | Numerical/contract checks (80), verification report (20) |
-| `research` | Recommend iterative solvers for three scenarios | Evidence-based manual rubric (100) |
+Five workflows using GPT-6 Astra (High) completed one coding repair, one scientific computing task and one research synthesis each. Fourteen submissions reached the scoring ceiling. The clearest differences in this pilot were elapsed time, token use and one violation of the worker assignment rules.
 
-Architectures: `solo`, `pipeline`, `manager`, `candidates`, `hierarchy`.
-The first pilot is 15 runs (one per cell). A later replication phase contains
-30 additional runs for three observations per cell in total. One task per
-category is a case study, not evidence of general superiority across a domain.
+| Architecture | Research /100 | Science /100 | Coding /100 | Eligible runs | Total elapsed¹ |
+|---|---:|---:|---:|---:|---:|
+| Solo | 97.92 | 100 | 100 | 3/3 | 603.6 s |
+| Manager–workers | 100 | 100 | 100 | 3/3 | 637.0 s |
+| Sequential pipeline | 100 | 100 | 100 | 3/3 | 1,334.9 s |
+| Independent candidates | 100 | 100 † | 100 | 2/3 | 971.4 s |
+| Two-level hierarchy | 100 | 100 | 100 | 3/3 | 1,013.1 s |
 
-## Before starting a run
+¹ Sum of the three measured runs, including ineligible attempts. † A science worker created a shared Python cache inside the workspace but outside its assigned directory. The submission earned 100 for its artifact and was excluded from the primary quality comparison. Solo research lost 2.08 points because one claim lacked sufficient support in the supplied sources.
 
-Requires Python 3.11+ and Git; no third-party Python packages or API key.
-All commands below are local, from this repository root.
+Solo used the fewest input and output tokens on each task. It completed the coding repair in 196.7 seconds, with the same score as the sequential pipeline at 479.2 seconds. Manager–workers was the fastest eligible full-score workflow on research and science. Each cell represents one observation.
+
+## How the experiment works
+
+- **Assign a workflow.** The [five architecture prompts](prompts/) specify who plans, implements, verifies and integrates. All runs used a fresh isolated workspace and a common 30-minute ceiling.
+- **Freeze one submission.** The operator stopped the clock at CLI exit, preserved the artifacts and checked session records for actual delegation and workspace compliance.
+- **Grade outside the run.** Coding and science allocate 80 points to executable checks and 20 to review. Research uses a 100-point source-grounded rubric. Two AI raters assessed manual criteria. The results include raw score, eligibility, elapsed seconds and token usage for every run. [Measured pilot method](docs/PILOT.md) · [Rubric](evaluation/RUBRIC.md)
+
+## Explore the evidence
+
+| Task | What the agent had to deliver | Pilot artifacts |
+|---|---|---|
+| [Coding](tasks/coding/TASK.md) | Repair a dependency scheduler and test ordering, arithmetic and input preservation | [Five repairs and test suites](results/pilot/coding/) |
+| [Scientific computing](tasks/science/TASK.md) | Implement a variable-coefficient elliptic solver and check convergence against two exact solutions | [Five solvers and verification datasets](results/pilot/science/) |
+| [Research](tasks/research/TASK.md) | Recommend iterative solvers for three scenarios using a fixed six-source digest | [Five reports and claim ledgers](results/pilot/research/) |
+
+## Research direction
+
+Our hypothesis is that larger inference budgets will make hierarchy more useful on difficult problems whose parts can be solved independently and then integrated. The pilot compared whole workflows under equal time ceilings. Token budgets differed and scores clustered at the maximum. The proposed next study varies difficulty, decomposability and team-wide inference budget on held-out problems. [Study design and limits](docs/PILOT.md#the-next-experiment)
+
+## Run the benchmark kit
+
+From a clean checkout with Python 3.11+ and Git, run:
 
 ```sh
 python3 -m unittest discover -s tests -v
@@ -30,55 +48,4 @@ python3 scripts/lab.py plan
 python3 scripts/lab.py prepare --run-id coding-solo-r1
 ```
 
-`prepare` only creates files. It never starts Codex or any agent. It refuses to
-overwrite an existing run. It creates an agent workspace and a separate operator
-folder under ignored `runs/<run-id>/`. Preparation requires a clean committed
-repository so the experiment inputs have an unambiguous revision.
-
-When ready to run: follow [the operator procedure](docs/PROTOCOL.md), open a
-**fresh Codex chat rooted at the generated `workspace/`**, select Astra / High,
-and paste `workspace/PROMPT.md`. Fill the operator record and start the timer at
-submission. Stop at completion or 30 minutes, whichever comes first. Do not run
-from this authoring chat. No chat is started by this repository's scripts.
-
-## After a run (commands provided for later use)
-
-```sh
-python3 scripts/lab.py evaluate --run-dir runs/coding-solo-r1
-# Fill operator/manual-score.json and operator/record.json using the rubric.
-python3 scripts/lab.py summarize --run-dir runs/coding-solo-r1
-```
-
-Evaluation executes submitted Python code. Use the same constrained local
-environment as the run; the evaluator is not a security sandbox. `summarize`
-requires completed scores with evidence and explicit validity decisions. Missing
-scores remain incomplete, never zero-filled or reported as a finished result.
-
-## Contents
-
-- [Protocol and run checklist](docs/PROTOCOL.md)
-- [Architecture definitions](prompts/) and shared controls
-- [Three task bundles](tasks/), including a frozen research source digest
-- [Scoring criteria](evaluation/RUBRIC.md) and executable grading cases
-- [Randomized run schedule](experiments/pilot.csv) and [fixed settings](experiments/config.json)
-- [Preparation evidence](docs/PREPARATION.md)
-
-The code/science tasks are authored benchmark fixtures. Science verification is
-analytical, not physical validation. Research scenarios are synthetic; source
-notes are attributed paraphrases of real technical references. No performance
-measurements are supplied or invented. The fixed research digest, rather than
-live browsing, is the v0.1 evidence corpus.
-
-Results will be added under `results/` after measured runs and a privacy check.
-Raw working directories, local paths, and chat exports are ignored by default.
-
-## Reproducibility and limitations
-
-The complete task/prompt/rubric bundle is hashed for each run. Requested and
-observed models, reasoning settings, hierarchy, elapsed time, and usage are
-recorded separately. Prompt instructions are not proof of actual orchestration.
-Fresh chats reduce carryover but do not guarantee absence of account memories
-or backend model drift. The protocol addresses these limits explicitly.
-
-No license has been selected yet; private preparation does not grant a public
-reuse license. Before public release, choose a license and review source notices.
+Preparation creates a workspace and operator files. To inspect the exact measured inputs, use [the frozen source revision](https://github.com/Turbo-lag/agent-hierarchy-lab/tree/380526b8c613be6ed46e23e2af24d47f25c04f2c). The [original operator procedure](docs/PROTOCOL.md) and [pilot method](docs/PILOT.md) describe setup, execution and evaluation. The public dataset and submissions can be explored without running a model.

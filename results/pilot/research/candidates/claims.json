@@ -1,0 +1,82 @@
+[
+  {
+    "id": "C1",
+    "claim": "Scenario A satisfies the digest's standard admissible setting for CG with a fixed SPD preconditioner.",
+    "source_ids": ["S1"],
+    "support": "direct",
+    "rationale": "S1 explicitly identifies real SPD matrices with fixed SPD preconditioners as the standard admissible setting; A supplies exactly those assumptions.",
+    "limitation": "The matrix and preconditioner properties are scenario assumptions, not independently verified data, and admissibility does not establish runtime superiority."
+  },
+  {
+    "id": "C2",
+    "claim": "CG is a justified initial recommendation for A, while the supplied assumptions do not justify standard CG for B or C.",
+    "source_ids": ["S1"],
+    "support": "inference",
+    "rationale": "S1 ties CG applicability to symmetry and definiteness of the matrix and preconditioner. A supplies the standard sufficient setting, whereas B and C explicitly supply nonsymmetric matrices.",
+    "limitation": "This selects a structurally justified starting method; it is not a timing ranking and does not analyze special formulations outside the supplied scenarios."
+  },
+  {
+    "id": "C3",
+    "claim": "GMRES restart controls retained orthogonalization directions, and B's 20-vector basis allowance is not a total-memory bound.",
+    "source_ids": ["S2"],
+    "support": "direct",
+    "rationale": "S2 says the restart parameter controls the Krylov directions participating in orthogonalization and explicitly states that those directions are only part of total solver storage. B defines its allowance specifically as a basis budget.",
+    "limitation": "The digest does not give exact allocation counts, bytes, or implementation-specific off-by-one details; these must be inspected during the experiment."
+  },
+  {
+    "id": "C4",
+    "claim": "Restarted GMRES and ordinary BiCGStab should be compared empirically for B rather than assigned a universal ranking.",
+    "source_ids": ["S2", "S3", "S6"],
+    "support": "inference",
+    "rationale": "S2 supplies restart and preconditioning capabilities; S6 explains that restarting may impair convergence and that BiCGStab uses short recurrences without a transpose product; S3 presents BiCGStab as a conditional alternative when the GMRES restart tradeoff is unsatisfactory.",
+    "limitation": "No supplied matrix, convergence history, or timing establishes the better method for B, and both candidates still require implementation and resource checks."
+  },
+  {
+    "id": "C5",
+    "claim": "BiCGStab avoids explicitly retaining GMRES's growing basis but can still break down or converge poorly.",
+    "source_ids": ["S3", "S6"],
+    "support": "direct",
+    "rationale": "S3 states the retained-basis distinction, while S6 explicitly identifies BiCGStab's short recurrences, possible breakdown, and poor convergence.",
+    "limitation": "These qualitative statements do not determine a total-memory ratio, a failure probability, or elapsed time on any synthetic scenario."
+  },
+  {
+    "id": "C6",
+    "claim": "Flexible GMRES is the supported initial recommendation for C's potentially nonlinear or changing inner-solve preconditioner.",
+    "source_ids": ["S4"],
+    "support": "inference",
+    "rationale": "S4 states that ordinary GMRES requires linear preconditioning and that flexible GMRES permits nonlinear preconditioning and iteration-to-iteration changes, explicitly identifying inner Krylov solves as generally nonlinear preconditioners. C supplies a tolerance-stopped inner solve whose action can change.",
+    "limitation": "This establishes a capability match, not a speed advantage, convergence guarantee, or equivalence of storage to ordinary GMRES."
+  },
+  {
+    "id": "C7",
+    "claim": "The supplied evidence does not justify substituting ordinary BiCGStab for flexible GMRES under C's changing preconditioning action.",
+    "source_ids": ["S3", "S4"],
+    "support": "inference",
+    "rationale": "S3 separates flexible BiCGStab variants from the ordinary implementation, while S4 expressly documents the required changing-preconditioner capability for flexible GMRES. The digest therefore supplies a positive capability match only for the latter among these choices.",
+    "limitation": "Absence of a documented capability in this bounded digest is not a proof that every ordinary BiCGStab run with such an inner solve must fail."
+  },
+  {
+    "id": "C8",
+    "claim": "BiCGStab's retained-basis advantage does not justify the universal claim that it is always the best solver.",
+    "source_ids": ["S1", "S3", "S4", "S6"],
+    "support": "inference",
+    "rationale": "S6 makes selection depend on matrix properties and multiple operation costs and allows BiCGStab failures; S3 gives only a conditional motivation; S1 and S4 establish structural and preconditioner capabilities that also govern admissibility. A single storage advantage therefore cannot establish universal superiority.",
+    "limitation": "The digest supports rejecting the universal decision rule but provides no measured numerical counterexample or universal ranking of the alternatives."
+  },
+  {
+    "id": "C9",
+    "claim": "All candidate runs should be judged by the same explicitly recomputed true-residual target rather than solver-reported norms alone.",
+    "source_ids": ["S5"],
+    "support": "inference",
+    "rationale": "S5 distinguishes the norm of b-Ax from preconditioned or approximate reported norms and identifies explicit recomputation as a way to make the achieved criterion inspectable. A common recomputed target therefore controls what success means across methods.",
+    "limitation": "The numerical tolerance and monitoring schedule are proposed experimental choices, not supplied results or source-mandated values; a small residual alone does not establish small solution error."
+  },
+  {
+    "id": "C10",
+    "claim": "A fair solver comparison should separate setup and solve costs, retain failure outcomes, and account for memory and restart behavior rather than rank unmatched iteration counts.",
+    "source_ids": ["S2", "S6"],
+    "support": "inference",
+    "rationale": "S6 says operation costs and preconditioner setup/application costs determine selection, iteration count alone is insufficient, restarting may impair convergence, and BiCGStab may fail. S2 distinguishes basis storage from total solver storage. These facts motivate the proposed cost, memory, restart, and failure reporting.",
+    "limitation": "The digest does not specify experimental hardware, timing limits, repetitions, or allocation-measurement methods, and no such benchmark has been executed here."
+  }
+]

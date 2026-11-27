@@ -1,0 +1,172 @@
+{
+  "provenance": "Analytical manufactured solutions; errors measured by running solver.py. No experimental data or physical validation.",
+  "error_definitions": {
+    "max_abs_nodal_error": "max over all nodes of abs(u_numerical-u_exact)",
+    "discrete_l2_error": "sqrt(h * sum of squared interior nodal errors)",
+    "observed_order": "log2(previous grid error / current grid error)",
+    "max_abs_pde_residual": "max interior abs((k_left*(u_i-u_previous)-k_right*(u_next-u_i))/h^2-f_i); algebraic residual, not solution error"
+  },
+  "cases": [
+    {
+      "name": "constant_coefficient_sine",
+      "formula": "k=1; u=sin(pi*x); f=pi^2*sin(pi*x)",
+      "left": 0.0,
+      "right": 0.0,
+      "grids": [
+        {
+          "n": 16,
+          "h": 0.0625,
+          "max_abs_nodal_error": 0.003218964440079519,
+          "discrete_l2_error": 0.0022761515839786438,
+          "max_error_order": null,
+          "l2_error_order": null,
+          "max_abs_pde_residual": 3.4638958368304884e-14,
+          "max_abs_boundary_error": 0.0
+        },
+        {
+          "n": 32,
+          "h": 0.03125,
+          "max_abs_nodal_error": 0.0008035776793697824,
+          "discrete_l2_error": 0.0005682152262925904,
+          "max_error_order": 2.0020872428192216,
+          "l2_error_order": 2.0020872428190857,
+          "max_abs_pde_residual": 2.0250467969162855e-13,
+          "max_abs_boundary_error": 0.0
+        },
+        {
+          "n": 64,
+          "h": 0.015625,
+          "max_abs_nodal_error": 0.00020082180969560604,
+          "discrete_l2_error": 0.0001420024634462589,
+          "max_error_order": 2.0005215338201543,
+          "l2_error_order": 2.0005215338168574,
+          "max_abs_pde_residual": 1.0160761121369433e-12,
+          "max_abs_boundary_error": 0.0
+        },
+        {
+          "n": 128,
+          "h": 0.0078125,
+          "max_abs_nodal_error": 5.020091591312337e-05,
+          "discrete_l2_error": 3.549740806233342e-05,
+          "max_error_order": 2.0001303662649175,
+          "l2_error_order": 2.0001303663338934,
+          "max_abs_pde_residual": 7.227995979519619e-12,
+          "max_abs_boundary_error": 0.0
+        }
+      ]
+    },
+    {
+      "name": "variable_coefficient_sine_plus_x",
+      "formula": "k=1+x; u=sin(pi*x)+x; f=(1+x)*pi^2*sin(pi*x)-pi*cos(pi*x)-1",
+      "left": 0.0,
+      "right": 1.0,
+      "grids": [
+        {
+          "n": 16,
+          "h": 0.0625,
+          "max_abs_nodal_error": 0.0031866457845659557,
+          "discrete_l2_error": 0.002245501869701966,
+          "max_error_order": null,
+          "l2_error_order": null,
+          "max_abs_pde_residual": 1.4033219031261979e-13,
+          "max_abs_boundary_error": 0.0
+        },
+        {
+          "n": 32,
+          "h": 0.03125,
+          "max_abs_nodal_error": 0.0007977286519891269,
+          "discrete_l2_error": 0.0005605023073146795,
+          "max_error_order": 1.9980686623483963,
+          "l2_error_order": 2.0022457063407275,
+          "max_abs_pde_residual": 7.513989430663059e-13,
+          "max_abs_boundary_error": 0.0
+        },
+        {
+          "n": 64,
+          "h": 0.015625,
+          "max_abs_nodal_error": 0.00019935434333806512,
+          "discrete_l2_error": 0.0001400711046410624,
+          "max_error_order": 2.00056305835868,
+          "l2_error_order": 2.00056093994765,
+          "max_abs_pde_residual": 3.5775826745521044e-12,
+          "max_abs_boundary_error": 0.0
+        },
+        {
+          "n": 128,
+          "h": 0.0078125,
+          "max_abs_nodal_error": 4.984430213639257e-05,
+          "discrete_l2_error": 3.501437321533396e-05,
+          "max_error_order": 1.9998345376915525,
+          "l2_error_order": 2.000140204515353,
+          "max_abs_pde_residual": 1.1446843473095214e-11,
+          "max_abs_boundary_error": 0.0
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "exact_boundary_enforcement": {
+      "passed": true
+    },
+    "nonzero_boundary_affine": {
+      "passed": true,
+      "n": 37,
+      "formula": "k=2.5; f=0; u=-2+5*x",
+      "max_abs_error": 2.886579864025407e-15,
+      "absolute_tolerance": 1e-12
+    },
+    "invalid_input": {
+      "passed": true,
+      "count": 35,
+      "cases": [
+        "bool n",
+        "small n",
+        "float n",
+        "noncallable k",
+        "noncallable f",
+        "left invalid scalar 0",
+        "right invalid scalar 0",
+        "k invalid scalar 0",
+        "f invalid scalar 0",
+        "left invalid scalar 1",
+        "right invalid scalar 1",
+        "k invalid scalar 1",
+        "f invalid scalar 1",
+        "left invalid scalar 2",
+        "right invalid scalar 2",
+        "k invalid scalar 2",
+        "f invalid scalar 2",
+        "left invalid scalar 3",
+        "right invalid scalar 3",
+        "k invalid scalar 3",
+        "f invalid scalar 3",
+        "left invalid scalar 4",
+        "right invalid scalar 4",
+        "k invalid scalar 4",
+        "f invalid scalar 4",
+        "left invalid scalar 5",
+        "right invalid scalar 5",
+        "k invalid scalar 5",
+        "f invalid scalar 5",
+        "left invalid scalar 6",
+        "right invalid scalar 6",
+        "k invalid scalar 6",
+        "f invalid scalar 6",
+        "nonpositive k 0.0",
+        "nonpositive k -1.0"
+      ]
+    },
+    "second_order": {
+      "passed": true,
+      "order_interval": [
+        1.9,
+        2.1
+      ]
+    },
+    "pde_residual": {
+      "passed": true,
+      "absolute_tolerance": 1e-08
+    }
+  },
+  "interpretation": "Both smooth cases should converge at second order. Small deviations from order 2 reflect higher-order truncation terms and floating-point effects. Small algebraic residuals establish that the discrete equations were solved, not physical accuracy."
+}

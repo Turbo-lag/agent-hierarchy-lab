@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Hierarchy Lab · Pilot results</title>
+<meta name="description" content="Explore 15 GPT-6 Astra runs across coding, scientific computing and research. Compare five agent workflows by score, time, usage and protocol compliance.">
+<meta name="theme-color" content="#152f38"><link rel="stylesheet" href="assets/site.css"><script type="module" src="assets/explorer.js"></script>
+</head><body>
+<a class="skip" href="#main">Skip to results overview</a>
+<header><div class="wrap nav"><a class="brand" href="#main"><span class="mark" aria-hidden="true">⌘</span>Agent Hierarchy Lab</a>
+<nav aria-label="Primary"><a href="#results">Results</a><a href="#method">Method</a><a href="https://github.com/Turbo-lag/agent-hierarchy-lab">GitHub</a></nav></div></header>
+<main id="main"><section class="hero"><div class="wrap intro"><div>
+<p class="eyebrow">Isolated pilot &nbsp; / &nbsp; November 2026</p>
+<h1>How does hierarchy change agent performance?</h1>
+<p class="dek">Five ways to organize GPT-6 Astra, tested on the same coding, scientific computing and research tasks.</p>
+<a class="cta" href="#results">Explore the results</a></div>
+<figure class="topology"><svg role="img" aria-labelledby="diagram-title diagram-desc" viewBox="0 0 400 222">
+<title id="diagram-title">The two-level hierarchy</title><desc id="diagram-desc">A root agent delegates to one team lead, who manages a construction worker and a verification worker.</desc>
+<g fill="none" stroke="#76cfc6" stroke-width="2"><path d="M200 51V85M200 124V146H100V167M200 146H300V167"/></g>
+<g fill="#264750" stroke="#7ab1ad"><rect x="133" y="12" width="134" height="39" rx="5"/><rect x="133" y="85" width="134" height="39" rx="5"/><rect x="29" y="167" width="142" height="39" rx="5"/><rect x="229" y="167" width="142" height="39" rx="5"/></g>
+<g text-anchor="middle" fill="#f4fffc" font-size="16" font-family="system-ui,sans-serif"><text x="200" y="37">Root</text><text x="200" y="110">Team lead</text><text x="100" y="192">Construction</text><text x="300" y="192">Verification</text></g></svg>
+<figcaption>Two-level hierarchy · four agent sessions</figcaption></figure></div></section>
+<div class="wrap"><section id="results"><p class="eyebrow">Pilot findings</p>
+<h2>Scores clustered at the ceiling.</h2>
+<p class="lead">Fourteen of 15 submissions earned full credit. All 15 runs completed. One science run breached a worker assignment rule, leaving 14 eligible for the primary comparison.</p>
+<div class="tablebox" tabindex="0" role="region" aria-label="Pilot score table, scroll horizontally on narrow screens"><table>
+<caption>Artifact scores by task, out of 100</caption><thead><tr><th scope="col">Architecture</th><th scope="col">Research</th><th scope="col">Science</th><th scope="col">Coding</th><th scope="col">Eligible</th></tr></thead><tbody>
+<tr><th scope="row">Solo</th><td>97.92</td><td>100</td><td>100</td><td>3 / 3</td></tr>
+<tr><th scope="row">Manager–workers</th><td>100</td><td>100</td><td>100</td><td>3 / 3</td></tr>
+<tr><th scope="row">Sequential pipeline</th><td>100</td><td>100</td><td>100</td><td>3 / 3</td></tr>
+<tr><th scope="row">Independent candidates</th><td>100</td><td class="flag">100 †</td><td>100</td><td>2 / 3</td></tr>
+<tr><th scope="row">Two-level hierarchy</th><td>100</td><td>100</td><td>100</td><td>3 / 3</td></tr>
+</tbody></table></div>
+<p class="note">† A science worker created a shared bytecode file outside its assigned scratch directory. The workspace boundary held. Solo research lost 2.08 points for one claim with insufficient support in the frozen source digest.</p>
+</section>
+<section class="explore" aria-labelledby="chart-title"><div class="chart-head"><div><p class="eyebrow">Measured workload</p><h2 id="chart-title">Compare the runs</h2></div>
+<div class="controls"><label>Task<select id="task"><option value="coding">Coding</option><option value="science">Science</option><option value="research">Research</option></select></label>
+<label>Measure<select id="metric"><option value="elapsed_seconds">Elapsed time</option><option value="input_tokens">Input tokens</option><option value="output_tokens">Output tokens</option></select></label></div></div>
+<p id="chart-caption" aria-live="polite">Elapsed time per coding run, in seconds</p><div id="bars" class="bars"></div>
+<p id="exclusion" class="note"></p>
+<p class="note">Bars start at zero and share a scale within the selected view. Each label links to the corresponding submission. Input includes cached context. Output includes reasoning.</p>
+<div class="links"><a href="data/pilot.csv" download>Download CSV</a><a href="data/pilot.json">Read JSON</a><a href="https://github.com/Turbo-lag/agent-hierarchy-lab/tree/main/results">All observations</a></div>
+<noscript><p>The complete workload table is available under All observations.</p></noscript></section>
+<section id="method"><p class="eyebrow">Experimental method</p><h2>Same task and clock. Different teams.</h2>
+<div class="columns"><div><h3>Assignment</h3><p>Each workflow received the same frozen inputs for its task in a fresh workspace. The operator fixed the model at Astra with High reasoning effort and capped every run at 30 minutes.</p></div>
+<div><h3>Evaluation</h3><p>The operator froze the final submission at completion. Coding and science earned up to 80 points from executable checks and 20 from review. Research used a 100-point rubric grounded in six source notes. Two AI raters assessed manual criteria.</p></div>
+<div><h3>Interpretation</h3><p>Session records established who delegated to whom. Grading tracked artifact quality and compliance separately. Each task–architecture pair ran once, and the time cap allowed teams to consume different amounts of inference.</p></div></div>
+<div class="links"><a href="https://github.com/Turbo-lag/agent-hierarchy-lab/blob/main/docs/PILOT.md">Read the full method</a><a href="https://github.com/Turbo-lag/agent-hierarchy-lab/tree/main/prompts">Inspect the five prompts</a><a href="https://github.com/Turbo-lag/agent-hierarchy-lab/blob/main/evaluation/RUBRIC.md">Scoring rubric</a></div>
+</section><section class="future"><p class="eyebrow">Proposed next study</p><h2>When does delegation earn its cost?</h2>
+<p class="lead">As inference becomes cheaper, can a hierarchy use a larger budget to solve harder problems? The proposed experiment gives each workflow the same team-wide allowance and varies whether the work can be divided into independent parts.</p>
+<a href="https://github.com/Turbo-lag/agent-hierarchy-lab/blob/main/docs/PILOT.md#the-next-experiment">Read the research direction</a></section></div></main>
+<footer><div class="wrap"><span>Agent Hierarchy Lab</span><span>Protocol v0.1.1-isolation</span><a href="https://github.com/Turbo-lag/agent-hierarchy-lab">Project repository</a></div></footer>
+</body></html>

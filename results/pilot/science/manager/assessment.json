@@ -1,0 +1,97 @@
+{
+  "run_id": "science-manager-isolation-r1",
+  "score": 100,
+  "eligible": true,
+  "automatic_cases": [
+    {
+      "case": "science_affine",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_polynomial",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_convergence",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_variable",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_general",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_validation",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_smallest",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_large",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    }
+  ],
+  "manual_criteria": [
+    {
+      "id": "study",
+      "score": 10,
+      "max": 10
+    },
+    {
+      "id": "derivation",
+      "score": 10,
+      "max": 10
+    }
+  ],
+  "original_manual_ratings": [
+    20,
+    20
+  ],
+  "files": {
+    "solver.py": {
+      "frozen_sha256": "cfefc39cf0c8df5e5550da2c3d5f8b208bd5b9024d65f094ed7d1037c4a9b22b",
+      "public_sha256": "cfefc39cf0c8df5e5550da2c3d5f8b208bd5b9024d65f094ed7d1037c4a9b22b"
+    },
+    "verify.py": {
+      "frozen_sha256": "dd7911f0bc02e72c91d966a2b7ad1dc497ce942a557794bdfa4682aa95e86de3",
+      "public_sha256": "dd7911f0bc02e72c91d966a2b7ad1dc497ce942a557794bdfa4682aa95e86de3"
+    },
+    "verification.json": {
+      "frozen_sha256": "961003c7534bb58550432f8cce93d3d171cf99460a0162b0ace19b989334a8d9",
+      "public_sha256": "961003c7534bb58550432f8cce93d3d171cf99460a0162b0ace19b989334a8d9"
+    },
+    "test_solution.py": {
+      "frozen_sha256": "f60d0254ad0f162947cf82f0db43f861722e7e783ea0b8ab8e5e31a396ca98bb",
+      "public_sha256": "f60d0254ad0f162947cf82f0db43f861722e7e783ea0b8ab8e5e31a396ca98bb"
+    },
+    "tests/test_smoke.py": {
+      "frozen_sha256": "ab968fa150ed8404b49efdcf0056abe8633d7803c1fc9233371939b71ee06116",
+      "public_sha256": "ab968fa150ed8404b49efdcf0056abe8633d7803c1fc9233371939b71ee06116"
+    },
+    "report.md": {
+      "frozen_sha256": "4b8ce86b6ddeff84a7a01ec07365aa050475e9f4753507ff3f623885a6cb0cab",
+      "public_sha256": "4b8ce86b6ddeff84a7a01ec07365aa050475e9f4753507ff3f623885a6cb0cab"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "run_id": "research-pipeline-r1-rerun1",
+  "score": 100,
+  "eligible": true,
+  "automatic_cases": [],
+  "manual_criteria": [
+    {
+      "id": "admissibility",
+      "score": 30,
+      "max": 30
+    },
+    {
+      "id": "evidence",
+      "score": 25,
+      "max": 25
+    },
+    {
+      "id": "tradeoffs",
+      "score": 20,
+      "max": 20
+    },
+    {
+      "id": "validation",
+      "score": 15,
+      "max": 15
+    },
+    {
+      "id": "clarity",
+      "score": 10,
+      "max": 10
+    }
+  ],
+  "original_manual_ratings": [
+    100,
+    100
+  ],
+  "files": {
+    "claims.json": {
+      "frozen_sha256": "0947d093ff221d563f87fa9d66399d0f044c70b19bb29fe9d2296be040fac72e",
+      "public_sha256": "0947d093ff221d563f87fa9d66399d0f044c70b19bb29fe9d2296be040fac72e"
+    },
+    "report.md": {
+      "frozen_sha256": "6b6c43ad70d1b8ac5c3727293fe8ad984e095ded62fda73237e65d5c3f5fd76c",
+      "public_sha256": "6b6c43ad70d1b8ac5c3727293fe8ad984e095ded62fda73237e65d5c3f5fd76c"
+    }
+  }
+}

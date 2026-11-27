@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "data_kind": "numerically computed errors against analytical manufactured solutions; not experimental data",
+  "python_version": "3.14.8",
+  "error_definitions": {
+    "max_error": "max over all nodes of abs(u_h - u_exact)",
+    "l2_error": "sqrt(h * sum of squared interior nodal errors)",
+    "order": "log2(error on previous grid / error on current grid); first grid null",
+    "max_algebraic_residual": "max over interior nodes of abs(A_h u_h - f); original equations include 1/h^2"
+  },
+  "cases": [
+    {
+      "name": "constant_k_sine",
+      "grids": [
+        {
+          "n": 16,
+          "h": 0.0625,
+          "max_error": 0.003218964440079519,
+          "l2_error": 0.0022761515839786438,
+          "max_order": null,
+          "l2_order": null,
+          "max_algebraic_residual": 3.4638958368304884e-14,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 32,
+          "h": 0.03125,
+          "max_error": 0.0008035776793697824,
+          "l2_error": 0.0005682152262925904,
+          "max_order": 2.0020872428192216,
+          "l2_order": 2.0020872428190857,
+          "max_algebraic_residual": 2.0250467969162855e-13,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 64,
+          "h": 0.015625,
+          "max_error": 0.00020082180969560604,
+          "l2_error": 0.0001420024634462589,
+          "max_order": 2.0005215338201543,
+          "l2_order": 2.0005215338168574,
+          "max_algebraic_residual": 1.0160761121369433e-12,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 128,
+          "h": 0.0078125,
+          "max_error": 5.020091591312337e-05,
+          "l2_error": 3.549740806233342e-05,
+          "max_order": 2.0001303662649175,
+          "l2_order": 2.0001303663338934,
+          "max_algebraic_residual": 7.227995979519619e-12,
+          "boundary_error": 0.0
+        }
+      ]
+    },
+    {
+      "name": "linear_k_sine_plus_x",
+      "grids": [
+        {
+          "n": 16,
+          "h": 0.0625,
+          "max_error": 0.0031866457845659557,
+          "l2_error": 0.002245501869701966,
+          "max_order": null,
+          "l2_order": null,
+          "max_algebraic_residual": 1.4033219031261979e-13,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 32,
+          "h": 0.03125,
+          "max_error": 0.0007977286519891269,
+          "l2_error": 0.0005605023073146795,
+          "max_order": 1.9980686623483963,
+          "l2_order": 2.0022457063407275,
+          "max_algebraic_residual": 7.513989430663059e-13,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 64,
+          "h": 0.015625,
+          "max_error": 0.00019935434333806512,
+          "l2_error": 0.0001400711046410624,
+          "max_order": 2.00056305835868,
+          "l2_order": 2.00056093994765,
+          "max_algebraic_residual": 3.5775826745521044e-12,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 128,
+          "h": 0.0078125,
+          "max_error": 4.984430213639257e-05,
+          "l2_error": 3.501437321533396e-05,
+          "max_order": 1.9998345376915525,
+          "l2_order": 2.000140204515353,
+          "max_algebraic_residual": 1.1446843473095214e-11,
+          "boundary_error": 0.0
+        }
+      ]
+    }
+  ],
+  "affine_case": {
+    "k": "1+x",
+    "u": "2+3*x",
+    "f": "-3",
+    "grids": [
+      {
+        "n": 2,
+        "max_error": 0.0,
+        "boundary_error": 0.0
+      },
+      {
+        "n": 16,
+        "max_error": 1.7763568394002505e-15,
+        "boundary_error": 0.0
+      },
+      {
+        "n": 128,
+        "max_error": 2.0872192862952943e-14,
+        "boundary_error": 0.0
+      }
+    ]
+  },
+  "invalid_input_checks": {
+    "n_bool": true,
+    "n_float": true,
+    "n_small": true,
+    "k_not_callable": true,
+    "f_not_callable": true,
+    "k_nan": true,
+    "f_nan": true,
+    "left_nan": true,
+    "right_nan": true,
+    "k_infinity": true,
+    "f_infinity": true,
+    "left_infinity": true,
+    "right_infinity": true,
+    "k_negative_infinity": true,
+    "f_negative_infinity": true,
+    "left_negative_infinity": true,
+    "right_negative_infinity": true,
+    "k_bool": true,
+    "f_bool": true,
+    "left_bool": true,
+    "right_bool": true,
+    "k_complex": true,
+    "f_complex": true,
+    "left_complex": true,
+    "right_complex": true,
+    "k_string": true,
+    "f_string": true,
+    "left_string": true,
+    "right_string": true,
+    "k_none": true,
+    "f_none": true,
+    "left_none": true,
+    "right_none": true,
+    "k_zero": true,
+    "k_negative": true
+  },
+  "checks": {
+    "boundaries_exact": true,
+    "second_order": true,
+    "small_algebraic_residual": true,
+    "affine_solution": true,
+    "invalid_inputs_rejected": true
+  },
+  "all_checks_passed": true
+}

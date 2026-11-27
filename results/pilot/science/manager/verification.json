@@ -1,0 +1,317 @@
+{
+  "data_kind": "Computed numerical errors against analytical manufactured solutions; not experimental data or physical validation.",
+  "error_definitions": {
+    "max_absolute_nodal_error": "max over all nodes of abs(u_h-u_exact)",
+    "discrete_l2_error": "sqrt(h * sum over interior nodes of (u_h-u_exact)^2)",
+    "orders": "log2(previous_grid_error/current_grid_error); null on first grid",
+    "max_absolute_algebraic_residual": "max interior abs(L_h(u_h)-f); unscaled differential-operator residual, distinct from solution error"
+  },
+  "manufactured_cases": [
+    {
+      "name": "constant_coefficient",
+      "formula": "k=1; u=sin(pi*x); f=pi^2*sin(pi*x)",
+      "grids": [
+        {
+          "n": 16,
+          "h": 0.0625,
+          "max_absolute_nodal_error": 0.003218964440079519,
+          "discrete_l2_error": 0.0022761515839786438,
+          "max_error_order": null,
+          "l2_error_order": null,
+          "max_absolute_algebraic_residual": 3.4638958368304884e-14,
+          "boundary_values": [
+            0.0,
+            0.0
+          ],
+          "boundary_enforcement_passed": true
+        },
+        {
+          "n": 32,
+          "h": 0.03125,
+          "max_absolute_nodal_error": 0.0008035776793697824,
+          "discrete_l2_error": 0.0005682152262925904,
+          "max_error_order": 2.0020872428192216,
+          "l2_error_order": 2.0020872428190857,
+          "max_absolute_algebraic_residual": 2.0250467969162855e-13,
+          "boundary_values": [
+            0.0,
+            0.0
+          ],
+          "boundary_enforcement_passed": true
+        },
+        {
+          "n": 64,
+          "h": 0.015625,
+          "max_absolute_nodal_error": 0.00020082180969560604,
+          "discrete_l2_error": 0.0001420024634462589,
+          "max_error_order": 2.0005215338201543,
+          "l2_error_order": 2.0005215338168574,
+          "max_absolute_algebraic_residual": 1.0160761121369433e-12,
+          "boundary_values": [
+            0.0,
+            0.0
+          ],
+          "boundary_enforcement_passed": true
+        },
+        {
+          "n": 128,
+          "h": 0.0078125,
+          "max_absolute_nodal_error": 5.020091591312337e-05,
+          "discrete_l2_error": 3.549740806233342e-05,
+          "max_error_order": 2.0001303662649175,
+          "l2_error_order": 2.0001303663338934,
+          "max_absolute_algebraic_residual": 7.227995979519619e-12,
+          "boundary_values": [
+            0.0,
+            0.0
+          ],
+          "boundary_enforcement_passed": true
+        }
+      ]
+    },
+    {
+      "name": "variable_coefficient",
+      "formula": "k=1+x; u=sin(pi*x)+x; f=(1+x)*pi^2*sin(pi*x)-pi*cos(pi*x)-1",
+      "grids": [
+        {
+          "n": 16,
+          "h": 0.0625,
+          "max_absolute_nodal_error": 0.0031866457845659557,
+          "discrete_l2_error": 0.002245501869701966,
+          "max_error_order": null,
+          "l2_error_order": null,
+          "max_absolute_algebraic_residual": 1.4033219031261979e-13,
+          "boundary_values": [
+            0.0,
+            1.0
+          ],
+          "boundary_enforcement_passed": true
+        },
+        {
+          "n": 32,
+          "h": 0.03125,
+          "max_absolute_nodal_error": 0.0007977286519891269,
+          "discrete_l2_error": 0.0005605023073146795,
+          "max_error_order": 1.9980686623483963,
+          "l2_error_order": 2.0022457063407275,
+          "max_absolute_algebraic_residual": 7.513989430663059e-13,
+          "boundary_values": [
+            0.0,
+            1.0
+          ],
+          "boundary_enforcement_passed": true
+        },
+        {
+          "n": 64,
+          "h": 0.015625,
+          "max_absolute_nodal_error": 0.00019935434333806512,
+          "discrete_l2_error": 0.0001400711046410624,
+          "max_error_order": 2.00056305835868,
+          "l2_error_order": 2.00056093994765,
+          "max_absolute_algebraic_residual": 3.5775826745521044e-12,
+          "boundary_values": [
+            0.0,
+            1.0
+          ],
+          "boundary_enforcement_passed": true
+        },
+        {
+          "n": 128,
+          "h": 0.0078125,
+          "max_absolute_nodal_error": 4.984430213639257e-05,
+          "discrete_l2_error": 3.501437321533396e-05,
+          "max_error_order": 1.9998345376915525,
+          "l2_error_order": 2.000140204515353,
+          "max_absolute_algebraic_residual": 1.1446843473095214e-11,
+          "boundary_values": [
+            0.0,
+            1.0
+          ],
+          "boundary_enforcement_passed": true
+        }
+      ]
+    }
+  ],
+  "affine_check": {
+    "n": 64,
+    "h": 0.015625,
+    "max_absolute_nodal_error": 6.661338147750939e-16,
+    "discrete_l2_error": 3.42079962657335e-16,
+    "max_error_order": null,
+    "l2_error_order": null,
+    "max_absolute_algebraic_residual": 1.8189894035458565e-12,
+    "boundary_values": [
+      -0.75,
+      1.25
+    ],
+    "boundary_enforcement_passed": true,
+    "formula": "k=1+x; u=2*x-0.75; f=-2",
+    "passed": true
+  },
+  "invalid_input_checks": [
+    {
+      "name": "n_bool",
+      "passed": true
+    },
+    {
+      "name": "n_float",
+      "passed": true
+    },
+    {
+      "name": "n_string",
+      "passed": true
+    },
+    {
+      "name": "n_none",
+      "passed": true
+    },
+    {
+      "name": "n_one",
+      "passed": true
+    },
+    {
+      "name": "n_zero",
+      "passed": true
+    },
+    {
+      "name": "n_negative",
+      "passed": true
+    },
+    {
+      "name": "k_noncallable",
+      "passed": true
+    },
+    {
+      "name": "f_noncallable",
+      "passed": true
+    },
+    {
+      "name": "k_zero",
+      "passed": true
+    },
+    {
+      "name": "k_negative",
+      "passed": true
+    },
+    {
+      "name": "k_nan",
+      "passed": true
+    },
+    {
+      "name": "f_nan",
+      "passed": true
+    },
+    {
+      "name": "left_nan",
+      "passed": true
+    },
+    {
+      "name": "right_nan",
+      "passed": true
+    },
+    {
+      "name": "k_positive_infinity",
+      "passed": true
+    },
+    {
+      "name": "f_positive_infinity",
+      "passed": true
+    },
+    {
+      "name": "left_positive_infinity",
+      "passed": true
+    },
+    {
+      "name": "right_positive_infinity",
+      "passed": true
+    },
+    {
+      "name": "k_negative_infinity",
+      "passed": true
+    },
+    {
+      "name": "f_negative_infinity",
+      "passed": true
+    },
+    {
+      "name": "left_negative_infinity",
+      "passed": true
+    },
+    {
+      "name": "right_negative_infinity",
+      "passed": true
+    },
+    {
+      "name": "k_bool",
+      "passed": true
+    },
+    {
+      "name": "f_bool",
+      "passed": true
+    },
+    {
+      "name": "left_bool",
+      "passed": true
+    },
+    {
+      "name": "right_bool",
+      "passed": true
+    },
+    {
+      "name": "k_complex",
+      "passed": true
+    },
+    {
+      "name": "f_complex",
+      "passed": true
+    },
+    {
+      "name": "left_complex",
+      "passed": true
+    },
+    {
+      "name": "right_complex",
+      "passed": true
+    },
+    {
+      "name": "k_string",
+      "passed": true
+    },
+    {
+      "name": "f_string",
+      "passed": true
+    },
+    {
+      "name": "left_string",
+      "passed": true
+    },
+    {
+      "name": "right_string",
+      "passed": true
+    },
+    {
+      "name": "k_none",
+      "passed": true
+    },
+    {
+      "name": "f_none",
+      "passed": true
+    },
+    {
+      "name": "left_none",
+      "passed": true
+    },
+    {
+      "name": "right_none",
+      "passed": true
+    }
+  ],
+  "checks": {
+    "all_manufactured_boundaries_exact": true,
+    "all_observed_orders_between_1_9_and_2_1": true,
+    "all_manufactured_algebraic_residuals_below_1e_8": true,
+    "nonzero_boundary_affine": true,
+    "invalid_inputs_raise_value_error": true
+  },
+  "passed": true
+}

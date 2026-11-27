@@ -1,0 +1,134 @@
+{
+  "data_kind": "analytical manufactured solutions; computed numerical errors",
+  "method": "conservative centered face-midpoint finite differences",
+  "error_definition": "computed u minus analytical u at nodes",
+  "l2_definition": "sqrt(h * sum(interior nodal errors squared))",
+  "residual_definition": "max_i abs((k_left*(u_i-u_previous) - k_right*(u_next-u_i))/h^2 - f_i)",
+  "order_definition": "log2(error at n / error at 2n); first entry null",
+  "physical_validation": false,
+  "cases": [
+    {
+      "name": "constant_k_sine",
+      "left": 0.0,
+      "right": 0.0,
+      "grids": [
+        {
+          "n": 16,
+          "h": 0.0625,
+          "max_abs_error": 0.003218964440079519,
+          "discrete_l2_error": 0.0022761515839786438,
+          "max_error_order": null,
+          "l2_error_order": null,
+          "max_abs_algebraic_residual": 3.4638958368304884e-14,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 32,
+          "h": 0.03125,
+          "max_abs_error": 0.0008035776793697824,
+          "discrete_l2_error": 0.0005682152262925904,
+          "max_error_order": 2.0020872428192216,
+          "l2_error_order": 2.0020872428190857,
+          "max_abs_algebraic_residual": 2.0250467969162855e-13,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 64,
+          "h": 0.015625,
+          "max_abs_error": 0.00020082180969560604,
+          "discrete_l2_error": 0.0001420024634462589,
+          "max_error_order": 2.0005215338201543,
+          "l2_error_order": 2.0005215338168574,
+          "max_abs_algebraic_residual": 1.0160761121369433e-12,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 128,
+          "h": 0.0078125,
+          "max_abs_error": 5.020091591312337e-05,
+          "discrete_l2_error": 3.549740806233342e-05,
+          "max_error_order": 2.0001303662649175,
+          "l2_error_order": 2.0001303663338934,
+          "max_abs_algebraic_residual": 7.227995979519619e-12,
+          "boundary_error": 0.0
+        }
+      ]
+    },
+    {
+      "name": "linear_k_sine_plus_x",
+      "left": 0.0,
+      "right": 1.0,
+      "grids": [
+        {
+          "n": 16,
+          "h": 0.0625,
+          "max_abs_error": 0.0031866457845661778,
+          "discrete_l2_error": 0.0022455018697021376,
+          "max_error_order": null,
+          "l2_error_order": null,
+          "max_abs_algebraic_residual": 1.4033219031261979e-13,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 32,
+          "h": 0.03125,
+          "max_abs_error": 0.0007977286519891269,
+          "discrete_l2_error": 0.0005605023073146795,
+          "max_error_order": 1.9980686623484967,
+          "l2_error_order": 2.002245706340838,
+          "max_abs_algebraic_residual": 7.531752999057062e-13,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 64,
+          "h": 0.015625,
+          "max_abs_error": 0.00019935434333806512,
+          "discrete_l2_error": 0.0001400711046410624,
+          "max_error_order": 2.00056305835868,
+          "l2_error_order": 2.00056093994765,
+          "max_abs_algebraic_residual": 3.5775826745521044e-12,
+          "boundary_error": 0.0
+        },
+        {
+          "n": 128,
+          "h": 0.0078125,
+          "max_abs_error": 4.984430213639257e-05,
+          "discrete_l2_error": 3.501437321533396e-05,
+          "max_error_order": 1.9998345376915525,
+          "l2_error_order": 2.000140204515353,
+          "max_abs_algebraic_residual": 1.1446843473095214e-11,
+          "boundary_error": 0.0
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "affine": {
+      "n": 73,
+      "k": 2.5,
+      "left": -2.0,
+      "right": 3.0,
+      "max_abs_error": 3.552713678800501e-15,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    "invalid_inputs_rejected": {
+      "bool_n": true,
+      "small_n": true,
+      "float_n": true,
+      "noncallable_k": true,
+      "noncallable_f": true,
+      "zero_k": true,
+      "negative_k": true,
+      "nan_k": true,
+      "infinite_f": true,
+      "bool_f": true,
+      "complex_f": true,
+      "nan_left": true,
+      "bool_right": true
+    },
+    "boundaries_exact": true,
+    "second_order": true
+  },
+  "all_checks_passed": true
+}

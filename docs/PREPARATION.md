@@ -1,6 +1,6 @@
 # Preparation evidence — 2026-11-07
 
-Status: prepared for pilot execution; no pilot model runs have occurred.
+Historical snapshot from November 7, 2026, before the first model run. The [completed pilot](../results/) has since been published.
 Baseline: new empty repository on main. Reviewed scope is the initial project
 commit containing this record. The frozen task/prompt/evaluator/protocol bundle
 SHA-256 is `7916d9b7f48bb2580dd66868e4b2b037d74a3df6112d7474a1209425af49f176`. Each prepared run also records the source Git commit.

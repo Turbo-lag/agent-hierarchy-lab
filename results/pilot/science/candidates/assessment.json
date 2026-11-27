@@ -1,0 +1,97 @@
+{
+  "run_id": "science-candidates-isolation-r1",
+  "score": 100,
+  "eligible": false,
+  "automatic_cases": [
+    {
+      "case": "science_affine",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_polynomial",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_convergence",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_variable",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_general",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_validation",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_smallest",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "science_large",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    }
+  ],
+  "manual_criteria": [
+    {
+      "id": "study",
+      "score": 10,
+      "max": 10
+    },
+    {
+      "id": "derivation",
+      "score": 10,
+      "max": 10
+    }
+  ],
+  "original_manual_ratings": [
+    20,
+    20
+  ],
+  "files": {
+    "solver.py": {
+      "frozen_sha256": "c91c9c01e5c7376e2bb62b01c3fdae2203ce003057edfcadaef5cd53409d3683",
+      "public_sha256": "c91c9c01e5c7376e2bb62b01c3fdae2203ce003057edfcadaef5cd53409d3683"
+    },
+    "verify.py": {
+      "frozen_sha256": "253d1657454a9b2c46d6b6231c5130da91a5086c13872db5d8358a0c831a4601",
+      "public_sha256": "253d1657454a9b2c46d6b6231c5130da91a5086c13872db5d8358a0c831a4601"
+    },
+    "verification.json": {
+      "frozen_sha256": "69dd1a897bac3c5fabcbd1411b59c8eda7b9a5e7d3be20db0c0264a663a39d1b",
+      "public_sha256": "69dd1a897bac3c5fabcbd1411b59c8eda7b9a5e7d3be20db0c0264a663a39d1b"
+    },
+    "test_solution.py": {
+      "frozen_sha256": "4d5cd84231d22588d045b8304193d07d7e7e8944c558f99f488b0ca858d20768",
+      "public_sha256": "4d5cd84231d22588d045b8304193d07d7e7e8944c558f99f488b0ca858d20768"
+    },
+    "tests/test_smoke.py": {
+      "frozen_sha256": "ab968fa150ed8404b49efdcf0056abe8633d7803c1fc9233371939b71ee06116",
+      "public_sha256": "ab968fa150ed8404b49efdcf0056abe8633d7803c1fc9233371939b71ee06116"
+    },
+    "report.md": {
+      "frozen_sha256": "18390c8c3f242fbfeb47fc71cb13c61a22d507829f5c31dd89f19101519761b9",
+      "public_sha256": "18390c8c3f242fbfeb47fc71cb13c61a22d507829f5c31dd89f19101519761b9"
+    }
+  }
+}

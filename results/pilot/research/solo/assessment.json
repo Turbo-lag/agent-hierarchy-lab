@@ -1,0 +1,47 @@
+{
+  "run_id": "research-solo-isolation-r1",
+  "score": 97.92,
+  "eligible": true,
+  "automatic_cases": [],
+  "manual_criteria": [
+    {
+      "id": "admissibility",
+      "score": 30,
+      "max": 30
+    },
+    {
+      "id": "evidence",
+      "score": 22.92,
+      "max": 25
+    },
+    {
+      "id": "tradeoffs",
+      "score": 20,
+      "max": 20
+    },
+    {
+      "id": "validation",
+      "score": 15,
+      "max": 15
+    },
+    {
+      "id": "clarity",
+      "score": 10,
+      "max": 10
+    }
+  ],
+  "original_manual_ratings": [
+    100,
+    97.92
+  ],
+  "files": {
+    "claims.json": {
+      "frozen_sha256": "ec62dc59cc82a1ffeec18907255cc70b14afa20475b77c476d624158dece8b59",
+      "public_sha256": "ec62dc59cc82a1ffeec18907255cc70b14afa20475b77c476d624158dece8b59"
+    },
+    "report.md": {
+      "frozen_sha256": "0acc163c83e41078d14ed8686a1dcfae42c787434ba74b4765ff297790458a84",
+      "public_sha256": "0acc163c83e41078d14ed8686a1dcfae42c787434ba74b4765ff297790458a84"
+    }
+  }
+}

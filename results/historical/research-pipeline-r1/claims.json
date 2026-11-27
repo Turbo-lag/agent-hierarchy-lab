@@ -1,0 +1,107 @@
+[
+  {
+    "id": "C1",
+    "claim": "A real SPD matrix with a fixed SPD preconditioner is the standard admissible CG setting used here.",
+    "source_ids": [
+      "S1"
+    ],
+    "support": "direct",
+    "rationale": "S1 explicitly states these matrix and preconditioner conditions as the standard admissible setting and distinguishes mathematical appropriateness from measured runtime.",
+    "limitation": "This does not cover all specialized CG settings or establish a speed ranking."
+  },
+  {
+    "id": "C2",
+    "claim": "Preconditioned CG is a justified starting baseline for scenario A.",
+    "source_ids": [
+      "S1"
+    ],
+    "support": "inference",
+    "rationale": "A assumes exactly the real SPD matrix and fixed SPD preconditioner identified as admissible in S1; choosing it as the baseline follows from that match.",
+    "limitation": "No scenario timings or convergence histories establish that CG is fastest."
+  },
+  {
+    "id": "C3",
+    "claim": "The GMRES restart parameter controls orthogonalization directions, which are only part of total solver storage.",
+    "source_ids": [
+      "S2"
+    ],
+    "support": "direct",
+    "rationale": "S2 describes the restart parameter as controlling the number of Krylov directions participating in orthogonalization and explicitly says those directions are only part of storage.",
+    "limitation": "The digest does not give a total-memory formula or exact allocation for a particular implementation."
+  },
+  {
+    "id": "C4",
+    "claim": "Restarting GMRES limits retained-basis storage but may impair convergence.",
+    "source_ids": [
+      "S6"
+    ],
+    "support": "direct",
+    "rationale": "S6 directly connects retained GMRES basis vectors to storage and states that restarting limits storage at a possible convergence cost.",
+    "limitation": "The severity of this effect and best restart length for B are unknown."
+  },
+  {
+    "id": "C5",
+    "claim": "BiCGStab handles nonsymmetric systems without a transpose product and uses short recurrences, but can break down or converge poorly.",
+    "source_ids": [
+      "S6"
+    ],
+    "support": "direct",
+    "rationale": "S6 expressly lists no-transpose nonsymmetric applicability and short recurrences while warning that breakdown and poor convergence remain possible.",
+    "limitation": "No failure probability, per-iteration cost measurement, or comparative runtime is supplied."
+  },
+  {
+    "id": "C6",
+    "claim": "Scenario B warrants comparing GMRES restart lengths no greater than 20, subject to operator and basis-allocation checks, with BiCGStab rather than selecting a winner in advance.",
+    "source_ids": [
+      "S2",
+      "S3",
+      "S6"
+    ],
+    "support": "inference",
+    "rationale": "S2 ties restart length to the orthogonalization directions constrained by B; S6 identifies restart/convergence tradeoffs and no-transpose BiCGStab applicability; S3 motivates BiCGStab conditionally when GMRES restart tradeoffs are unsatisfactory.",
+    "limitation": "The 20-vector basis budget comes from the synthetic scenario, not the sources. Actual basis allocation must fit it; GMRES operator requirements are not explicit in the digest. Total storage and convergence still need checking."
+  },
+  {
+    "id": "C7",
+    "claim": "Ordinary GMRES requires linear preconditioning, while flexible GMRES permits nonlinear or changing action; PETSc FGMRES supports right preconditioning.",
+    "source_ids": [
+      "S4"
+    ],
+    "support": "direct",
+    "rationale": "S4 explicitly contrasts the ordinary method's linearity requirement with flexible GMRES's nonlinear and iteration-varying capabilities and identifies PETSc's right-preconditioning support.",
+    "limitation": "These are admissibility capabilities, not guarantees of convergence, speed, or identical storage to ordinary GMRES."
+  },
+  {
+    "id": "C8",
+    "claim": "FGMRES is the justified starting choice for C because its assumed effective preconditioner action can change.",
+    "source_ids": [
+      "S4"
+    ],
+    "support": "inference",
+    "rationale": "C supplies the changing-action assumption, and S4 supplies the flexible method's ability to accommodate it, supporting the recommendation without requiring the inner method to be Krylov.",
+    "limitation": "C does not specify an inner Krylov method, and the recommendation does not predict measured performance."
+  },
+  {
+    "id": "C9",
+    "claim": "Avoiding GMRES basis retention does not establish that BiCGStab is universally best.",
+    "source_ids": [
+      "S2",
+      "S3",
+      "S6"
+    ],
+    "support": "inference",
+    "rationale": "S3 describes the basis-storage advantage but only conditional motivation; S2 distinguishes basis storage from total storage; S6 makes selection dependent on matrix properties and operation costs and retains BiCGStab failure risks.",
+    "limitation": "This rejects the proposed universal inference without establishing an opposite universal ranking or numerical memory ratio."
+  },
+  {
+    "id": "C10",
+    "claim": "A fair comparison should verify a common true-residual target, separate setup and solve costs, and avoid ranking by unmatched iteration counts.",
+    "source_ids": [
+      "S5",
+      "S6"
+    ],
+    "support": "inference",
+    "rationale": "S5 distinguishes true from potentially preconditioned or approximate reported residuals, motivating explicit residual verification; S6 states that setup/application expense can trade against iteration counts, motivating separate cost accounting.",
+    "limitation": "This is a proposed comparison protocol, not an executed benchmark or a tolerance mandated by either source."
+  }
+]

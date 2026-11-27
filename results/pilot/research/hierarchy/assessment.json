@@ -1,0 +1,47 @@
+{
+  "run_id": "research-hierarchy-isolation-r1",
+  "score": 100,
+  "eligible": true,
+  "automatic_cases": [],
+  "manual_criteria": [
+    {
+      "id": "admissibility",
+      "score": 30,
+      "max": 30
+    },
+    {
+      "id": "evidence",
+      "score": 25,
+      "max": 25
+    },
+    {
+      "id": "tradeoffs",
+      "score": 20,
+      "max": 20
+    },
+    {
+      "id": "validation",
+      "score": 15,
+      "max": 15
+    },
+    {
+      "id": "clarity",
+      "score": 10,
+      "max": 10
+    }
+  ],
+  "original_manual_ratings": [
+    100,
+    100
+  ],
+  "files": {
+    "claims.json": {
+      "frozen_sha256": "e5f2f1958259e6aa3189bff052c320f549b1fe04505f6a78f6a1f1cdbcd636f4",
+      "public_sha256": "e5f2f1958259e6aa3189bff052c320f549b1fe04505f6a78f6a1f1cdbcd636f4"
+    },
+    "report.md": {
+      "frozen_sha256": "ca511969b93761d71fa947e24d0099a62ceafc229f9440cd05a3486f95736fe2",
+      "public_sha256": "ca511969b93761d71fa947e24d0099a62ceafc229f9440cd05a3486f95736fe2"
+    }
+  }
+}

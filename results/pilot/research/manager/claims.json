@@ -1,0 +1,117 @@
+[
+  {
+    "id": "C1",
+    "claim": "Scenario A satisfies the standard admissibility conditions for CG because both the real matrix and the fixed preconditioner are SPD.",
+    "source_ids": [
+      "S1"
+    ],
+    "support": "inference",
+    "rationale": "S1 explicitly identifies a real SPD matrix with a fixed SPD preconditioner as the standard admissible CG setting. Applying that condition to A's supplied assumptions establishes admissibility in this scenario.",
+    "limitation": "SPD and fixedness are scenario assumptions, not independently measured properties. Admissibility establishes neither the fastest runtime nor a measured advantage over the alternatives."
+  },
+  {
+    "id": "C2",
+    "claim": "CG is not justified for the original nonsymmetric systems in scenarios B and C under the standard setting supplied by the digest.",
+    "source_ids": [
+      "S1"
+    ],
+    "support": "inference",
+    "rationale": "S1 imposes symmetry and definiteness conditions on the matrix and preconditioner. B and C explicitly assume nonsymmetric matrices, so their original systems do not satisfy the stated standard conditions.",
+    "limitation": "This conclusion concerns the supplied original systems; no transformed systems, alternate formulations, or specialized extensions are evaluated."
+  },
+  {
+    "id": "C3",
+    "claim": "The GMRES restart parameter controls orthogonalization directions, which are only part of total solver storage.",
+    "source_ids": [
+      "S2"
+    ],
+    "support": "direct",
+    "rationale": "S2 explicitly states that the restart parameter controls how many Krylov directions participate in orthogonalization and that these directions account for only part of total solver storage.",
+    "limitation": "The digest gives no exact allocation formula or implementation-specific vector-count convention. Applying this distinction to B, check the actual orthogonalization basis against the 20-vector budget and report other storage separately; this is not a total-memory cap."
+  },
+  {
+    "id": "C4",
+    "claim": "Restarting GMRES can impair convergence even while limiting basis storage.",
+    "source_ids": [
+      "S6"
+    ],
+    "support": "direct",
+    "rationale": "S6 explicitly links GMRES restarting to bounded storage and possible impaired convergence, supporting a storage-versus-convergence tradeoff rather than an unconditional benefit from shorter restarts.",
+    "limitation": "The digest predicts neither which restart lengths will converge for B nor the severity of any convergence penalty."
+  },
+  {
+    "id": "C5",
+    "claim": "BiCGStab is a candidate for B despite the absence of a transpose operation.",
+    "source_ids": [
+      "S6",
+      "S3"
+    ],
+    "support": "inference",
+    "rationale": "S6 explicitly says BiCGStab handles nonsymmetric systems without a transpose product. S3 permits left or right preconditioning. Together these notes support using B's nonsymmetric matrix-vector product and fixed preconditioner with an appropriate preconditioning side.",
+    "limitation": "Compatibility with the available operations is not a guarantee of convergence or speed; S6 explicitly allows breakdown or poor convergence."
+  },
+  {
+    "id": "C6",
+    "claim": "BiCGStab avoids GMRES's retained growing basis, but this storage advantage does not establish that it is always the best solver.",
+    "source_ids": [
+      "S3",
+      "S6"
+    ],
+    "support": "inference",
+    "rationale": "S3 describes avoiding the GMRES basis as a conditional motivation and disclaims an unconditional convergence advantage. S6 makes selection depend on matrix properties, operation costs, and memory while noting possible BiCGStab breakdown or poor convergence. Thus the universal ranking does not follow from the storage fact.",
+    "limitation": "No measured ranking, exact memory ratio, or concrete runtime counterexample for these scenarios is supplied; the defensible conclusion is rejection of the unsupported universal rule."
+  },
+  {
+    "id": "C7",
+    "claim": "Flexible GMRES with right preconditioning is the supported default candidate for C's potentially changing tolerance-stopped inner solve.",
+    "source_ids": [
+      "S4"
+    ],
+    "support": "inference",
+    "rationale": "S4 says ordinary GMRES requires a linear preconditioning operator, whereas flexible GMRES accommodates nonlinear and changing preconditioning; it also identifies inner Krylov solves as generally nonlinear preconditioners and specifies PETSc's right-preconditioning support. These capabilities match C's supplied possible changes in effective preconditioner action.",
+    "limitation": "C does not specify its inner algorithm, so the claim does not assert that every tolerance-stopped solver must be nonlinear. FGMRES addresses the stated possibility but provides no guaranteed speed advantage or convergence."
+  },
+  {
+    "id": "C8",
+    "claim": "Ordinary GMRES in C would require additional justification that the effective preconditioner is a fixed linear operator; standard BiCGStab should not be presumed flexible.",
+    "source_ids": [
+      "S4",
+      "S3"
+    ],
+    "support": "inference",
+    "rationale": "S4 identifies linear preconditioning as an ordinary-GMRES requirement and distinguishes FGMRES's ability to accommodate changes. S3 explicitly separates flexible BiCGStab variants from the documented standard implementation. These distinctions prevent silently transferring flexible-preconditioning capabilities to the ordinary methods.",
+    "limitation": "The digest does not characterize all variants or all exceptional inner solvers. Merely fixing an inner iteration count does not establish linearity without checking the specific inner algorithm."
+  },
+  {
+    "id": "C9",
+    "claim": "Solver-reported residual norms should not automatically be treated as the true residual norm of b-Ax.",
+    "source_ids": [
+      "S5"
+    ],
+    "support": "direct",
+    "rationale": "S5 distinguishes the true residual from solver-reported norms that may be preconditioned or approximate and explicitly warns against interpreting every displayed norm as the norm of b-Ax.",
+    "limitation": "S5 notes norm equivalence for right preconditioning; that distinction does not eliminate the value of explicit final true-residual verification in a comparison."
+  },
+  {
+    "id": "C10",
+    "claim": "A fair experiment should use a common explicitly recomputed true-residual target and report preconditioner setup and solve costs separately.",
+    "source_ids": [
+      "S5",
+      "S6"
+    ],
+    "support": "inference",
+    "rationale": "S5 supports making achieved accuracy inspectable by recomputing b-Ax. S6 says preconditioning trades setup and application costs against iterations, so separating setup from solve costs exposes rather than hides that tradeoff while the common residual target makes outcomes comparable.",
+    "limitation": "The sources supply the methodological motivation, not a numerical tolerance or timing result; experiment tolerances and cost-accounting choices must be declared before runs."
+  },
+  {
+    "id": "C11",
+    "claim": "Iteration count alone cannot choose a performance winner; comparisons must also account for operation costs, memory, restarts, and unsuccessful solves.",
+    "source_ids": [
+      "S6",
+      "S2"
+    ],
+    "support": "inference",
+    "rationale": "S6 explicitly lists matrix products, preconditioner applications, vector operations, and inner products as selection costs and says iteration counts alone are insufficient. Its restart-convergence tradeoff and BiCGStab failure possibilities motivate recording restarts and unsuccessful solves. S2's distinction between basis and total storage motivates recording both memory quantities.",
+    "limitation": "These are proposed comparison records, not measurements; unknown convergence and runtime remain unresolved until a controlled experiment is performed."
+  }
+]

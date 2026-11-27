@@ -1,0 +1,103 @@
+{
+  "run_id": "coding-pipeline-isolation-r1",
+  "score": 100,
+  "eligible": true,
+  "automatic_cases": [
+    {
+      "case": "coding_basic",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "coding_order",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "coding_dependencies",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "coding_validation",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "coding_cycles",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "coding_immutable",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "coding_chain",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    },
+    {
+      "case": "coding_arithmetic",
+      "passed": true,
+      "points": 10,
+      "max": 10
+    }
+  ],
+  "manual_criteria": [
+    {
+      "id": "regression",
+      "score": 10,
+      "max": 10
+    },
+    {
+      "id": "explanation",
+      "score": 10,
+      "max": 10
+    }
+  ],
+  "original_manual_ratings": [
+    20,
+    20
+  ],
+  "files": {
+    "scheduler.py": {
+      "frozen_sha256": "2061cac66ef96521513cac7c915f64f4ec3402b52894122065218eb79535a16e",
+      "public_sha256": "2061cac66ef96521513cac7c915f64f4ec3402b52894122065218eb79535a16e"
+    },
+    "test_solution.py": {
+      "frozen_sha256": "b044b5db32c8719e9b35f109add801cfa8fa766c2bbec5d6bda0a85ed52c763e",
+      "public_sha256": "b044b5db32c8719e9b35f109add801cfa8fa766c2bbec5d6bda0a85ed52c763e"
+    },
+    "tests/test_smoke.py": {
+      "frozen_sha256": "b0b66a046e3dc7fb1fe791d8725fa5fbadc5050f55eacc700f0c7de44c4d3b4d",
+      "public_sha256": "b0b66a046e3dc7fb1fe791d8725fa5fbadc5050f55eacc700f0c7de44c4d3b4d"
+    },
+    "report.md": {
+      "frozen_sha256": "a0c4ebdd7c21de74aa9e505fb761010527544ad8cbfa43723d9ce462da88db2e",
+      "public_sha256": "a0c4ebdd7c21de74aa9e505fb761010527544ad8cbfa43723d9ce462da88db2e"
+    }
+  },
+  "unscored_graph_diagnostics": {
+    "passed": 113,
+    "total": 113
+  },
+  "submitted_suite": {
+    "returncode": 0,
+    "tests_reported": 27,
+    "test_file_exists": true
+  },
+  "starter_control": {
+    "returncode": 1,
+    "tests_reported": 27,
+    "test_file_exists": true
+  }
+}
